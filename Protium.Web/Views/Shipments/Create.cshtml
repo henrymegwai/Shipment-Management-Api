@@ -1,0 +1,73 @@
+﻿@model Data.Models.CreateShipmentRequest
+@using Data.Helper 
+@{
+    ViewData["Title"] = "Create Shipment";
+}
+
+<h1>Create</h1>
+
+<h4>Shipment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="origin" class="control-label"></label>
+                <input asp-for="origin" class="form-control" />
+                <span asp-validation-for="origin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="destination" class="control-label"></label>
+                <input asp-for="destination" class="form-control" />
+                <span asp-validation-for="destination" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="status" class="control-label"></label>
+                <select asp-for="status" class ="form-control" asp-items="Html.GetEnumSelectList<Status>()"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="shipment_date" class="control-label"></label>
+                <input asp-for="shipment_date" class="form-control" />
+                <span asp-validation-for="shipment_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="driverid" class="control-label"></label>
+                <select asp-for="driverid" class ="form-control" asp-items="ViewBag.driverid"></select>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="planned_date" class="control-label"></label>
+                <input asp-for="planned_date" class="form-control" />
+                <span asp-validation-for="planned_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="effective_date" class="control-label"></label>
+                <input asp-for="effective_date" class="form-control" />
+                <span asp-validation-for="effective_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="comments" class="control-label"></label>
+                <input asp-for="comments" class="form-control" />
+                <span asp-validation-for="comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="associated_barcode" class="control-label"></label>
+                <input asp-for="associated_barcode" class="form-control" />
+                <span asp-validation-for="associated_barcode" class="text-danger"></span>
+            </div>
+              </br>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
